@@ -1,7 +1,0 @@
-If you use the dbuezas board package there is an intuitive menu option to select 32, 16, 8, 4, 2 or 1 MHz operation.
-
-The board package takes care of frquency sensitive operations such as delay() or millis()...  You may need to watch
-things if selecting certain baud rates - especially lower rates...
-
-If you burn a new bootloader it will default to the frequency you selected so you will have to select the appropriate frequency from the menu to get understandabel results.
-
