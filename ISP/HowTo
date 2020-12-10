@@ -1,0 +1,23 @@
+a Step by Step guide to getting the LarduinoISP up and going..
+
+A). download or clone the LarduinoISP from https://github.com/LGTMCU/LarduinoISP
+
+B). modify SERIAL_RX_BUFFER_SIZE to 250 in HardwareSerial.h in wherever core you are going to use as a programmer...  For example I used an Arduino Nano and had to modify arduino-1.8.13/hardware/arduino/avr/cores/arduino/HardwareSerial.h under the directory where I had installed the Arduino IDE.  I changed the value of 64 to 256 ( even though David recommended using 250 - see the initial comments in the file ).
+
+C). replace programmers.txt in ~/.arduino15/packages/LGT8fx Boards/hardware/avr/1.0.5 with the file included here.... or just add the following lines:
+
+    avrisp.name=LarduinoISP
+    avrisp.communication=serial
+    avrisp.protocol=stk500v1
+    avrisp.speed=115200
+    avrisp.program.tool=avrdude
+    avrisp.program.protocol=stk500v1
+    avrisp.program.tool=avrdude
+    avrisp.program.extra_params=-P{serial.port}
+
+D). Upload the LarduinoISP sketch to the board you are going to use as a "programmer".
+
+E). Connect your "programmer" to the target LGT8F328 board as shown in the diagram of the LarduinoISP package from Step A.
+    NOTE - You Also need to disable the Reset on the "progammer" board by connecting a 10uF or so Capacitor from Vcc to Reset....
+    .... or just jumper Reset directly to Vcc...  at least on an UNO or Nano...
+    
