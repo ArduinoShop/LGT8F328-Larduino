@@ -6,6 +6,7 @@ The LGT8F328 MCU is a very close copy of the microChip/Atmel ATmega328 with just
 Some of these features (in order of importance to "ArduinoShop" are:
 
 1) 32MHz operation - internal frequency base of 32, 16, 8, 4, 2 or 1 MHz can be selected via software without burning a new bootloader.
+    Read https://github.com/ArduinoShop/LGT8F328-Larduino/blob/main/Selecting%20Frequencies
 2) 4 timers, as opposed to 3 timers in the ATmega328 - Timer3 is a 16 bit timer.
 3) DAC - digital to analog convertor
 4) Higher current drive on certain GPIOs
