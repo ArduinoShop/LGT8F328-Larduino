@@ -21,3 +21,9 @@ E). Connect your "programmer" to the target LGT8F328 board as shown in the diagr
     NOTE - You Also need to disable the Reset on the "progammer" board by connecting a 10uF or so Capacitor from Vcc to Reset....
     .... or just jumper Reset directly to Vcc...  at least on an UNO or Nano...
     
+F). In the Arduino IDE, select the appropriate LGTxx board, frequency, etc.  Make sure the PORT is set to that of the "programmer" board.
+    Select the LarduinoISP programmer and use the Sketch->Upload using Programmer to up load your sketch to the target board, et la voila, your sketch should be
+    uploaded and running.  Try resetting the board and observe how quickly it springs to life.  Also you have about 1/2KByte of extra flash to use..
+    
+    Your comments and suggestions are always welcome...
+    
