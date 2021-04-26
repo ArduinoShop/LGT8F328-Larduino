@@ -13,6 +13,7 @@ Some of these features (in order of importance to "ArduinoShop" are:
     Best to visit dbuezas github for this.
 4) Higher current drive on certain GPIOs
 5) additional IRQ pins
+6) Adding printf to the Arduino IDE 2.0
 
 I will get more in depth into the extra features as I have time.
 
