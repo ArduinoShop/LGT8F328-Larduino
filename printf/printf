@@ -1,2 +1,48 @@
 As I previously alluded I was going to explain how to add printf to the Arduino IDE: so here goes...
 
+This was tested with the Arduino IDE 2.0 nightly build of Apr. 24 2021 as well as 1.8.10.
+
+As an old 'C' programmer I rejected the Arduino IDE as brain-dead the first time I tried it - there was no support for the 'printf' function..
+I finally got off of my high horse and put up with it..
+
+By way of background, printf is a "formatted" print function which simply put allows the programmer to replace:
+
+Serial.print( "X = "); Serial.print( X ); Serial.print( " Y = 0x"); Serial.println( Y, HEX );
+
+  with:
+  
+Serial.printf("X = %d, Y = 0x%X\n", X, Y );
+
+if you have never neede to debug your Arduino sketch you may not understand why this would be desireable...
+
+A while ago I had the opportunity to try the MCUdude MiniCore board package and was delighted to see that it had printf imlemented..
+So I snooped around thier core and have blatently copied their code and placed it into the standard Arduino core...  as well as other cores that I use like the LGT8F328.  The <a href="https://github.com/MCUdude/MiniCore" targer="_blank">MiniCore</a> package (which I highly recommend) only supports the ATmega328 family.
+
+So it is really quite simple: just
+
+1. install the MiniCore package referenced above..
+2. find the 'core' directory for your standard board package. I found mine in: ~/.arduino15/packages/arduino/hardware/avr/1.8.3/cores/arduino/
+3. back up the existing "Print" file by renaming Print.cpp and Print.h to Print.cpp.ORIG and Print.h.ORIG respectively
+4. find the MiniCore core directory ...  found mine at ~/.arduino15/packages/MiniCore/hardware/avr/2.0.5/cores/MCUdude_corefiles
+5. copy the Print.cpp and Print.h files from the MiniCore package to replace the renamed files..
+6. close your IDE and open it again..... La Voila
+
+This should enable printf on all of the boards in the standard Arduino boards package for any recent version of the IDE including 2.0...
+
+My first reaction to not finding printf in the standard IDE was that they were trying to save flash space...  Maybe I was correct...
+
+a brief test using a minimal sketch on an UNO consumed: 3172 bytes of flash and 208 bytes of RAM with a Serial.printf("printf says x = 0x%X\n", x++ ); statment.
+... changing to a Serial.print("printf says x = 0x"); Serial.println( x++, HEX );  ...  used 1770 flash and the same amount of RAM...
+
+.....  worth it to me
+
+The magic is in the '%' formatting parameter(s)...  there are many of them including the ability to format numbers to length and prefix i.e.
+"%08lX"  will dispay and 8 digit HEX number with leading 0s...
+
+a quick <a href="https://duckduckgo.com/?t=ffnt&q=printf+formatting&ia=web" target="_blank">duckduckgo search for "printf formatting"</a>  will result in 100s of discussiona and tutorials.
+
+I find printf indispensible for debugging - you can always comment out the printf statements in the debugged version of you sketch to recover the extra flash used by printf..
+
+Enjoy!!!
+
+
