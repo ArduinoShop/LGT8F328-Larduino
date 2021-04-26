@@ -31,5 +31,9 @@ What the LGT8F328 cannot do:  there are at least 2 thing you need to be aware of
 2) off the shelf LGT boards have the programability of the WatchDog interrupt basically disabled with the end result that freeRTOS will not run on these boards.
     One workaround is to use timer3 which involes small mods to some freeRTOS files and the somewhat complex mods I did to IDE files...
     ....  or use the Larduino programmer sketch on a separate board thereby eliminating the bootloader and freeRTOS runs with no mods...
-    
+......
+
+6) Adding the "printf" function to the Arduino IDE is discussed <a href=" https://github.com/ArduinoShop/LGT8F328-Larduino/tree/main/printf">here</a>.
+
 ...... cheap plug for my store: Canadians can get LGT8F328 arduino boards at: https://arduinoshop.ca/atmelbased I call them Nano32
+
