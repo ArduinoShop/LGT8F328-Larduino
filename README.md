@@ -21,17 +21,17 @@ I had to modify (kludge/mung) some Arduino IDE files to be able to get most of t
 
 All of my work starts with David Buezas' excellent board package available at his github https://github.com/dbuezas/lgt8fx
 
-my haphazard munging of the IDE was also inspired by the microCore board package from MCUdude at https://github.com/MCUdude/MicroCore
+my haphazard munging of the IDE was also inspired by the microCore [board package](https://github.com/MCUdude/MicroCore) from MCUdude at https://github.com/MCUdude/MicroCore
 
-What the LGT8F328 cannot do:  there are at least 2 thing you need to be aware of when using this MCU:
+What the LGT8F328P cannot do:  there are at least 2 thing you need to be aware of when using this MCU:
 
 1) it is not programmable via the SPI bus like the Atmel chips - It uses a SWD interface to accomplish this...
-    there is a workaround using a separate arduino as programmer..
+    I have creatd a module that functions as a USBasp/USBisp compatibe with the ArduinoIDE. There is also workaround using a separate arduino board as programmer, at times referred to as the LarduinoISP - David has adapted a version that he includes in the above mentioned boards package..
     
-2) off the shelf LGT boards have the programability of the WatchDog interrupt basically disabled with the end result that freeRTOS will not run on these boards.
-    One workaround is to use timer3 which involes small mods to some freeRTOS files and the somewhat complex mods I did to IDE files...
-    ....  or use the Larduino programmer sketch on a separate board thereby eliminating the bootloader and freeRTOS runs with no mods...
-......
+2) off the shelf LGT boards have the programability of the WatchDog interrupt basically disabled (in the bootloader) with the end result that freeRTOS will not run on these boards.
+    One workaround is to use timer3 which involves small mods to some freeRTOS files and the somewhat complex mods I did to IDE files...
+    ....  or use the LarduinoISP solution discussed in the above paragraph thereby eliminating the bootloader and freeRTOS runs with no mods...
+
 
 6) Adding the "printf" function to the Arduino IDE is discussed <a href=" https://github.com/ArduinoShop/LGT8F328-Larduino/tree/main/printf">here</a>.
 
